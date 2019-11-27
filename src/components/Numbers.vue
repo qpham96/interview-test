@@ -18,7 +18,15 @@ export default {
   watch: {
     ['$parent.limit'](newLimit)
     {
+      while(newLimit > 0){              // This limits the limiter so the value cannot be negeative.
+      while(newLimit <= 100){           // This limits the limiter so the value cannot be higher than 100.
       this.limit = newLimit;
+      }
+      newLimit = 100
+      this.limit = newLimit;            //if the input value exceed 100 then it will return 100
+      }
+      newLimit = 1
+      this.limit = newLimit;            //if the input value is negative it will return 1.
     }
   },
   methods: {
@@ -27,7 +35,7 @@ export default {
       let numbers = [];
       for(var i = 0; i < this.limit; i++)
       {
-        numbers = [...numbers, i];
+        numbers = [...numbers, i+1];    //the random numbers had to be between 1-100, so added the +1 to i as it goes by array index
       }
       return numbers.sort(() => Math.random() - 0.5);
     },
