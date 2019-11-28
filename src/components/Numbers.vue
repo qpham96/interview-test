@@ -65,7 +65,7 @@ export default {
 .number {
   display: inline-block;
   padding: 5px;
-  background-color: 197, 171, 171;
+  background-color: lightgreen;
   margin: 5px;
 }
 
