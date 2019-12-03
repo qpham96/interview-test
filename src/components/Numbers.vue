@@ -36,26 +36,25 @@ export default {
   },
   methods: {
     n() {
-      let numbers = [];
-      for (var i = 0; i < this.limit; i++) {
-        numbers = [...numbers, i + 1]; //the random numbers had to be between 1-100, so added the +1 to i as it goes by array index
+      let numbers = [];     // initialisng the array for numbers
+      for (var i = 0; i < this.limit; i++) { //a loop based on the input called this.limit value set as the maximum size
+        numbers = [...numbers, i + 1]; // initialising the values into an array basuse on array index. Added the +1 to i as it goes by array index to show 1-100 instead of 0 - 99
       }
-      return numbers.sort(() => Math.random() - 0.5);
+      return numbers.sort(() => Math.random() - 0.5); //randomises the array values
     },
     hov(number) {
-      const nums = document.querySelectorAll(".number");
-
-      for (let i = 0; i < nums.length; i++) {
+      const nums = document.querySelectorAll(".number"); // This returns all values within the set parameter number
+      for (let i = 0; i < nums.length; i++) { 
         const num = nums[i].textContent.trim();
-        if (number % num === 0 && number != num) { // added the number != num to remove the hovered number from being highlighted
-            nums[i].classList.add("active");
-            console.log("divisor", num);
+        if (number % num === 0 && number != num) { // uses the highlighted number and finds all of it's divisible numbers, added the "number != num" to remove the hovered number from being highlighted
+            nums[i].classList.add("active"); // whem the number is divisable and has no remainder, it'll assign that number as active
+            // console.log("divisor", num); in the console it will print all the numbers that are divisor of the hovered number
           }
       }
     },
-    reset() {
-      const nums = document.querySelectorAll(".number");
-      nums.forEach(num => num.classList.remove("active"));
+    reset() { 
+      const nums = document.querySelectorAll(".number"); // This returns all values
+      nums.forEach(num => num.classList.remove("active")); // looping to see if any numbers are assigned active and then removing them
     }
   }
 };
